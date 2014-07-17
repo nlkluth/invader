@@ -1,3 +1,6 @@
+/* global Phaser: false */
+var player, game = new Phaser.Game(400, 300, Phaser.AUTO, 'gameDiv');
+
 var mainState = {
   preload: function() {
     game.stage.backgroundColor = '#3498db';
