@@ -10,6 +10,10 @@ var mainState = {
     game.stage.backgroundColor = '#3498db';
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+    player.anchor.setTo(0.5, 0.5);
+    game.physics.arcade.enable(player);
+    player.body.gravity.y = 500;
+
     cursor = game.input.keyboard.createCursorKeys();
   },
   update: function() {
