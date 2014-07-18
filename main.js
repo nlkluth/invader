@@ -17,6 +17,19 @@ var mainState = {
     cursor = game.input.keyboard.createCursorKeys();
   },
   update: function() {
+  },
+  movePlayer: function() {
+    if (cursor.left.isDown) {
+      player.body.velocity.x = -200;
+    } else if (cursor.right.isDown) {
+      player.body.velocity.x = 200;
+    } else {
+      player.body.velocity.x = 0;
+    }
+
+    if (cursor.up.isDown && player.body.touching.down) {
+      player.body.velocity.y = -320;
+    }
   }
 };
 
