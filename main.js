@@ -17,6 +17,7 @@ var mainState = {
     cursor = game.input.keyboard.createCursorKeys();
   },
   update: function() {
+    this.movePlayer();
   },
   movePlayer: function() {
     if (cursor.left.isDown) {
