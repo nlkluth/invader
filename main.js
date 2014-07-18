@@ -1,5 +1,6 @@
 /* global Phaser: false */
-var player, game = new Phaser.Game(400, 300, Phaser.AUTO, 'gameDiv');
+var player, cursor,
+  game = new Phaser.Game(400, 300, Phaser.AUTO, 'gameDiv');
 
 var mainState = {
   preload: function() {
@@ -9,6 +10,7 @@ var mainState = {
     game.stage.backgroundColor = '#3498db';
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+    cursor = game.input.keyboard.createCursorKeys();
   },
   update: function() {
   }
