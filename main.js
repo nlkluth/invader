@@ -18,13 +18,11 @@ var mainState = {
     player.body.gravity.y = 500;
 
     cursor = game.input.keyboard.createCursorKeys();
-    var leftWall = game.add.sprite(0, 0, 'wallV');
-    game.physics.arcade.enable(leftWall);
-    leftWall.body.immovable = true;
 
-    var rightWall = game.add.sprite(480, 0, 'wallV');
-    game.physics.arcade.enable(rightWall);
-    rightWall.body.immovable = true;
+    var walls = game.add.group();
+    walls.enableBody = true;
+    game.add.sprite(0, 0, 'wallV', 0, walls);
+    walls.setAll('body.immovable', true);
   },
   update: function() {
     this.movePlayer();
