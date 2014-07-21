@@ -24,6 +24,7 @@ var mainState = {
   },
 
   update: function() {
+    game.physics.arcade.collide(player, walls);
     this.movePlayer();
   },
 
@@ -41,7 +42,7 @@ var mainState = {
     }
   },
   createWorld: function() {
-    var walls = game.add.group();
+    walls = game.add.group();
     walls.enableBody = true;
     game.add.sprite(0, 0, 'wallV', 0, walls); // Left
     game.add.sprite(480, 0, 'wallV', 0, walls); // Right
