@@ -80,6 +80,12 @@ var mainState = {
 
   playerDie: function() {
     game.state.start('main');
+  },
+
+  takeCoin: function(player, coin) {
+    coin.kill();
+    score += 5;
+    scoreLabel.text = 'score: ' + score;
   }
 };
 
