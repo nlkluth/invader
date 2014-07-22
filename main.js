@@ -1,5 +1,5 @@
 /* global Phaser: false */
-var player, cursor, walls,
+var player, cursor, walls, coin, scoreLabel, score,
   game = new Phaser.Game(500, 340, Phaser.AUTO, 'gameDiv');
 
 var mainState = {
@@ -7,6 +7,7 @@ var mainState = {
     game.load.image('player', 'assets/player.png');
     game.load.image('wallV', 'assets/wallVertical.png');
     game.load.image('wallH', 'assets/wallHorizontal.png');
+    game.load.image('coin', 'assets/coin.png');
   },
 
   create: function() {
@@ -19,6 +20,16 @@ var mainState = {
     player.body.gravity.y = 500;
 
     cursor = game.input.keyboard.createCursorKeys();
+    coin = game.add.sprite(60, 140, 'coin');
+    game.physics.arcade.enable(coin);
+    coin.anchor.setTo(0.5, 0.5);
+
+    scoreLabel = game.add.text(30, 30, 'score: 0', {
+      font: '18px Arial',
+      fill: '#ffffff'
+    });
+
+    score = 0;
 
     this.createWorld();
   },
