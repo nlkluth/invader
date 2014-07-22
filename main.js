@@ -26,6 +26,10 @@ var mainState = {
   update: function() {
     game.physics.arcade.collide(player, walls);
     this.movePlayer();
+
+    if (!player.inWorld) {
+      this.playerDie();
+    }
   },
 
   movePlayer: function() {
@@ -41,6 +45,7 @@ var mainState = {
       player.body.velocity.y = -320;
     }
   },
+
   createWorld: function() {
     walls = game.add.group();
     walls.enableBody = true;
@@ -59,6 +64,10 @@ var mainState = {
     middleBottom.scale.setTo(1.5, 1);
 
     walls.setAll('body.immovable', true);
+  },
+
+  playerDie: function() {
+    game.state.start('main');
   }
 };
 
