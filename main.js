@@ -36,6 +36,7 @@ var mainState = {
 
   update: function() {
     game.physics.arcade.collide(player, walls);
+    game.physics.arcade.overlap(player, coin, this.takeCoin, null, this);
     this.movePlayer();
 
     if (!player.inWorld) {
