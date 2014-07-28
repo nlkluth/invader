@@ -101,6 +101,9 @@ var mainState = {
         coinPosition.splice(i, 1);
       }
     }
+
+    var newPosition = coinPosition[game.rnd.integerInRange(0, coinPosition.lenght-1)];
+    coin.reset(newPosition.x, newPosition.y);
   }
 };
 
