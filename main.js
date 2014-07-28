@@ -95,6 +95,12 @@ var mainState = {
       {x: 60, y: 140}, {x: 440, y: 140},
       {x: 130, y: 300}, {x: 370, y: 300}
     ];
+
+    for (var i = 0; i < coinPosition.length; i++) {
+      if (coinPosition[i].x === coin.x) {
+        coinPosition.splice(i, 1);
+      }
+    }
   }
 };
 
