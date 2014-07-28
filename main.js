@@ -83,9 +83,10 @@ var mainState = {
   },
 
   takeCoin: function(player, coin) {
-    coin.kill();
     score += 5;
     scoreLabel.text = 'score: ' + score;
+
+    this.updateCoinPosition();
   }
 };
 
