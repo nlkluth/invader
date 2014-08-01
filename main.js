@@ -37,7 +37,7 @@ var mainState = {
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.createMultiple(10, 'enemy');
-    gmae.time.events.loop(2200, this.addEnemy, this);
+    game.time.events.loop(2200, this.addEnemy, this);
   },
 
   update: function() {
