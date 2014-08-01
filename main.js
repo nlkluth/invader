@@ -64,6 +64,22 @@ var mainState = {
     }
   },
 
+  addEnemy: function() {
+    var enemy = enemies.getFirstDead();
+
+    if (!enemy) {
+      return;
+    }
+
+    enemy.anchor.setTo(0.5, 1);
+    enemy.reset(game.world.centerX, 0);
+    enemy.body.gravity.y = 500;
+    enemy.body.velocity.x = 100 * Phaser.Math.randomSign();
+    enemy.body.bounce.x = 1;
+    enemy.checkWorldBounds = true;
+    enemy.outOfBoundsKill = true;
+  },
+
   createWorld: function() {
     walls = game.add.group();
     walls.enableBody = true;
