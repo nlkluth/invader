@@ -1,5 +1,5 @@
 /* global Phaser: false */
-var player, cursor, walls, coin, scoreLabel, score,
+var player, cursor, walls, coin, scoreLabel, score, enemies,
   game = new Phaser.Game(500, 340, Phaser.AUTO, 'gameDiv');
 
 var mainState = {
@@ -8,6 +8,7 @@ var mainState = {
     game.load.image('wallV', 'assets/wallVertical.png');
     game.load.image('wallH', 'assets/wallHorizontal.png');
     game.load.image('coin', 'assets/coin.png');
+    game.load.image('enemy', 'assets/enemy.png');
   },
 
   create: function() {
@@ -32,6 +33,11 @@ var mainState = {
     score = 0;
 
     this.createWorld();
+
+    enemies = game.add.group();
+    enemies.enableBody = true;
+    enemies.createMultiple(10, 'enemy');
+    gmae.time.events.loop(2200, this.addEnemy, this);
   },
 
   update: function() {
