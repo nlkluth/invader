@@ -102,7 +102,7 @@ var mainState = {
       }
     }
 
-    var newPosition = coinPosition[game.rnd.integerInRange(0, coinPosition.lenght-1)];
+    var newPosition = coinPosition[game.rnd.integerInRange(0, coinPosition.length-1)];
     coin.reset(newPosition.x, newPosition.y);
   }
 };
