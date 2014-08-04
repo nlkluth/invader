@@ -19,6 +19,10 @@ var loadState = {
     game.load.image('wallV', 'assets/wallVertical.png');
     game.load.image('wallH', 'assets/wallHorizontal.png');
     game.load.image('background', 'assets/background.png');
+
+    game.load.audio('jump', ['assets/jump.ogg', 'assets/jump.mpg3']);
+    game.load.audio('coin', ['assets/coin.ogg', 'assets/coin.mpg3']);
+    game.load.audio('dead', ['assets/dead.ogg', 'assets/dead.mpg3']);
   },
 
   create: function() {
