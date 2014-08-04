@@ -1,6 +1,7 @@
 'use strict';
 
-var player, walls, enemies, scoreLabel, coin, cursor;
+var player, walls, jumpSound, coinSound, deadSound,
+  enemies, scoreLabel, coin, cursor;
 
 var playState = {
   create: function() {
@@ -27,6 +28,10 @@ var playState = {
     game.global.score = 0;
     this.createWorld();
     game.time.events.loop(2200, this.addEnemy, this);
+
+    jumpSound = game.add.audio('jump');
+    deadSound = game.add.audio('dead');
+    coinSound = game.add.audio('coin');
   },
 
   update: function() {
@@ -52,6 +57,7 @@ var playState = {
 
     if (cursor.up.isDown && player.body.touching.down) {
       player.body.velocity.y = -320;
+      jumpSound.play();
     }
   },
 
@@ -94,11 +100,13 @@ var playState = {
   takeCoin: function() {
     game.global.score += 5;
     scoreLabel.text = 'score: ' + game.global.score;
+    coinSound.play();
 
     this.updateCoinPosition();
   },
 
   playerDie: function() {
+    deadSound.play();
     game.state.start('menu');
   },
 
