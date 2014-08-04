@@ -1,3 +1,5 @@
+'use strict';
+
 var player, walls, enemies, scoreLabel, coin, cursor;
 
 var playState = {

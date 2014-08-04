@@ -1,3 +1,5 @@
+'use strict';
+
 var loadState = {
   preload: function() {
     var loadingLabel = game.add.text(game.world.centerX, 150, 'loading...', {
