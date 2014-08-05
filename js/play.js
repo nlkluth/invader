@@ -11,6 +11,8 @@ var playState = {
     player.anchor.setTo(0.5, 0.5);
     game.physics.arcade.enable(player);
     player.body.gravity.y = 500;
+    player.animations.add('right', [1, 2], 8, true);
+    player.animations.add('left', [3, 4], 8, true);
 
     enemies = game.add.group();
     enemies.enableBody = true;
@@ -49,10 +51,14 @@ var playState = {
   movePlayer: function() {
     if (cursor.left.isDown) {
       player.body.velocity.x = -200;
+      player.animations.play('left');
     } else if (cursor.right.isDown) {
       player.body.velocity.x = 200;
+      player.animations.play('right');
     } else {
       player.body.velocity.x = 0;
+      player.animations.stop();
+      player.frame = 0;
     }
 
     if (cursor.up.isDown && player.body.touching.down) {
