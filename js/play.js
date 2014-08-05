@@ -104,6 +104,11 @@ var playState = {
   },
 
   takeCoin: function() {
+    coin.scale.setTo(0, 0);
+    game.add.tween(coin.scale).to({x: 1, y: 1}, 300).start();
+
+    game.add.tween(player.scale).to({x: 1.3, y: 1.3}, 50).to({x: 1, y: 1}, 150).start();
+
     game.global.score += 5;
     scoreLabel.text = 'score: ' + game.global.score;
     coinSound.play();
