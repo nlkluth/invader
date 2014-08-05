@@ -4,10 +4,13 @@ var menuState = {
   create: function() {
     game.add.image(0, 0, 'background');
 
-    var nameLabel = game.add.text(game.world.centerX, 80, 'Super Coin Box', {
+    var nameLabel = game.add.text(game.world.centerX, -50, 'Super Coin Box', {
       font: '50px Arial',
       fill: '#ffffff'
     });
+
+    game.add.tween(nameLabel).to({y: 80}, 1000)
+      .easing(Phaser.Easing.Bounce.Out).start();
 
     var scoreLabel = game.add.text(game.world.centerX, game.world.centerY,
       'score: ' + game.global.score, {
