@@ -24,6 +24,9 @@ var menuState = {
         fill: '#ffffff'
       });
 
+    game.add.tween(startLabel).to({angle: -2}, 500).to({angle: 2}, 500)
+      .loop().start();
+
     nameLabel.anchor.setTo(0.5, 0.5);
     scoreLabel.anchor.setTo(0.5, 0.5);
     startLabel.anchor.setTo(0.5, 0.5);
