@@ -34,6 +34,12 @@ var playState = {
     jumpSound = game.add.audio('jump');
     deadSound = game.add.audio('dead');
     coinSound = game.add.audio('coin');
+
+    emitter = game.add.emitter(0, 0, 15);
+    emitter.makeParticles('pixel');
+    emitter.setYSpeed(-150, 150);
+    emitter.setXSpeed(-150, 150);
+    emitter.gravity = 0;
   },
 
   update: function() {
