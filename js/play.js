@@ -123,13 +123,14 @@ var playState = {
   },
 
   playerDie: function() {
+    player.kill();
     deadSound.play();
 
     emitter.x = player.x;
     emitter.y = player.y;
     emitter.start(true, 600, null, 15);
 
-    game.state.start('menu');
+    game.time.events.add(1000, this.startMenu, this);
   },
 
   updateCoinPosition: function() {
@@ -147,5 +148,9 @@ var playState = {
 
     var newPosition = coinPosition[game.rnd.integerInRange(0, coinPosition.length-1)];
     coin.reset(newPosition.x, newPosition.y);
+  },
+
+  startMenu: function() {
+    game.state.start('menu');
   }
 };
