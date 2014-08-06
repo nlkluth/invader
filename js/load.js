@@ -23,6 +23,8 @@ var loadState = {
     game.load.audio('jump', ['assets/jump.ogg', 'assets/jump.mpg3']);
     game.load.audio('coin', ['assets/coin.ogg', 'assets/coin.mpg3']);
     game.load.audio('dead', ['assets/dead.ogg', 'assets/dead.mpg3']);
+
+    game.load.image('pixel', 'assets/pixel.png');
   },
 
   create: function() {
