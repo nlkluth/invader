@@ -1,7 +1,7 @@
 'use strict';
 
 var player, walls, jumpSound, coinSound, deadSound,
-  enemies, scoreLabel, coin, cursor;
+  enemies, scoreLabel, coin, cursor, emitter;
 
 var playState = {
   create: function() {
@@ -124,6 +124,11 @@ var playState = {
 
   playerDie: function() {
     deadSound.play();
+
+    emitter.x = player.x;
+    emitter.y = player.y;
+    emitter.start(true, 600, null, 15);
+
     game.state.start('menu');
   },
 
