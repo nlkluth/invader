@@ -123,6 +123,10 @@ var playState = {
   },
 
   playerDie: function() {
+    if (!player.alive) {
+      return;
+    }
+
     player.kill();
     deadSound.play();
 
