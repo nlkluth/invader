@@ -12,10 +12,22 @@ var menuState = {
     game.add.tween(nameLabel).to({y: 80}, 1000)
       .easing(Phaser.Easing.Bounce.Out).start();
 
+    if (!localStorage.getItem('bestScore')) {
+      localStorage.setItem('bestScore', 0);
+    }
+
+    if (game.global.score > localStorage.getItem('bestScore')) {
+      localStorage.setItem('bestScore', game.global.score);
+    }
+
+    var text = 'score: ' + game.global.score + '\nbest score: ' +
+      localStorage.getItem('bestScore');
+
     var scoreLabel = game.add.text(game.world.centerX, game.world.centerY,
-      'score: ' + game.global.score, {
+      text, {
         font: '25px Arial',
-        fill: '#ffffff'
+        fill: '#ffffff',
+        align: 'center'
       });
 
     var startLabel = game.add.text(game.world.centerX, game.world.height - 80,
