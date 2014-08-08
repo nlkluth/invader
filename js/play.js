@@ -1,7 +1,7 @@
 'use strict';
 
 var player, walls, jumpSound, coinSound, deadSound,
-  enemies, scoreLabel, coin, cursor, emitter;
+  enemies, scoreLabel, coin, cursor, emitter, nextEnemy;
 
 var playState = {
   create: function() {
@@ -29,7 +29,7 @@ var playState = {
 
     game.global.score = 0;
     this.createWorld();
-    game.time.events.loop(2200, this.addEnemy, this);
+    nextEnemy = 0;
 
     jumpSound = game.add.audio('jump');
     deadSound = game.add.audio('dead');
@@ -51,6 +51,12 @@ var playState = {
 
     if (!player.inWorld) {
       this.playerDie();
+    }
+
+    if (nextEnemy < game.time.now) {
+      this.addEnemy();
+
+      nextEnemy = game.time.now + 2200;
     }
   },
 
