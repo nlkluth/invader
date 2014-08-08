@@ -54,9 +54,11 @@ var playState = {
     }
 
     if (nextEnemy < game.time.now) {
-      this.addEnemy();
+      var start = 4000, end = 1000, score = 100;
+      var delay = Math.max(start - (start-end)*game.global.score/score, end);
 
-      nextEnemy = game.time.now + 2200;
+      this.addEnemy();
+      nextEnemy = game.time.now + delay;
     }
   },
 
