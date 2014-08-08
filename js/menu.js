@@ -1,4 +1,5 @@
 'use strict';
+var muteButton;
 
 var menuState = {
   create: function() {
@@ -45,7 +46,19 @@ var menuState = {
 
     var upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
     upKey.onDown.addOnce(this.start, this);
+
+    muteButton = game.add.button(20, 20, 'mute', this.toggleSound, this);
+    if (game.sound.mute) {
+      muteButton.frame = 1;
+    }
+
+    muteButton.input.useHandCursor = true;
   },
+
+  toggleSound: function() {
+    game.sound.mute = !game.sound.mute;
+    muteButton.frame = game.sound.mute ? 1 : 0;
+  }
 
   start: function() {
     game.state.start('play');
