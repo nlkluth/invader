@@ -1,11 +1,19 @@
 'use strict';
 
 var player, walls, jumpSound, coinSound, deadSound,
-  enemies, scoreLabel, coin, cursor, emitter, nextEnemy;
+  enemies, scoreLabel, coin, cursor, emitter, nextEnemy, wasd;
 
 var playState = {
   create: function() {
     cursor = game.input.keyboard.createCursorKeys();
+    game.input.keyboard.addKeyCapture([Phaser.Keyboard.UP, Phaser.Keyboard.DOWN,
+      Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT]);
+
+    wasd = {
+      up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+      left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+      right: game.input.keyboard.addKey(Phaser.Keyboard.D)
+    };
 
     player = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
     player.anchor.setTo(0.5, 0.5);
@@ -63,10 +71,10 @@ var playState = {
   },
 
   movePlayer: function() {
-    if (cursor.left.isDown) {
+    if (cursor.left.isDown || wasd.left.isDown) {
       player.body.velocity.x = -200;
       player.animations.play('left');
-    } else if (cursor.right.isDown) {
+    } else if (cursor.right.isDown || wasd.right.isDown) {
       player.body.velocity.x = 200;
       player.animations.play('right');
     } else {
@@ -75,7 +83,7 @@ var playState = {
       player.frame = 0;
     }
 
-    if (cursor.up.isDown && player.body.touching.down) {
+    if ((cursor.up.isDown || wasd.up.isDown) && player.body.touching.down) {
       player.body.velocity.y = -320;
       jumpSound.play();
     }
